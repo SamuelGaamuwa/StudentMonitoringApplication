@@ -23,9 +23,9 @@
    $sql = 'CREATE DATABASE sma_db';
    //function to decide if the person is a teacher or a parent 
    function select(){
-       if($instance=='Teacher'){
+       if($instance=='teacher'){
            echo'teachers';
-       }elseif($instance=='Parent'){
+       }elseif($instance=='parent'){
            echo'parents';
        }
    }
@@ -104,12 +104,35 @@
             </div>
             <div class="form-group">
                 <label for="instance">Select category</label>
-                <select class="form-control" id="instance">
+                <select class="form-control" id="instance" onchange="enableselectionbox();">
                     <option value="teacher">Teacher</option>
                     <option value="parent">Parent</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+             <script type="text/javascript">
+                    function enableselectionbox() {
+                        if (document.getElementById('instance').value === 'teacher') {
+                            document.getElementById('subject').disable = false;
+                        } else {
+                            document.getElementById('subject').disable = true;
+                        }
+                    }
+                </script>
+            <div class="form-group">
+                <label for="subject">Subjects taught</label>
+                <select class="form-control" multiple="multiple" id="subject">
+                    <option value="math">Mathematics</option>
+                    <option value="phys">Physics</option>
+                    <option value="chem">Chemistry</option>
+                    <option value="biol">Biology</option>
+                    <option value="engl">English</option>
+                    <option value="geog">Geography</option>
+                    <option value="hist">History</option>
+                    <option value="lang">Languages</option>
+                </select>
+               
+            </div>
+            <input type="submit" value="Submit">
         </form>
         </div>
         </div>

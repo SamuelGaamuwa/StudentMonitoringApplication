@@ -8,7 +8,13 @@
         //check if all fields are filled 
         if(!empty($fname)&&!empty($lname)&&!empty($sex)){
             echo 'successful again ';
-        }else{echo'please enter fill all the fields';}
+        }
+        else{
+            echo'please enter fill all the fields';
+        }
+    }
+    else{
+        echo'there is something lacking';
     }
 
     $dbhost = 'localhost:3306';
@@ -33,30 +39,32 @@
         <title></title>
     </head>
     <body>
+        <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" role="form">
             <div class="form-group" >
                 Enter the details of the student
             </div>
             <div class="form-group">
                 <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
+                <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
                 <label for="fname">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
+                <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
             </div>
             <div class="radio">
                 <label class="checkbox-inline">
-                    <input type="radio" name="sex" id="sex1" value="male"> Male
+                    <input type="radio" name="sex" value="male"> Male
                 </label>
                 <label class="checkbox-inline">
-                    <input type="radio" name="sex" id="sex2" value="female"> Female
+                    <input type="radio" name="sex" value="female"> Female
                 </label>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <input type="submit" value="Submit">
         </form>
         <script type="text/javascript">
             window.onload = function () {
                 $('#student').addClass('active');
             };
         </script>
+        </div>
     </body>
 </html>
