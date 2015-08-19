@@ -1,6 +1,22 @@
  <?php
-    include 'DefaultPage.php';
+    include 'DefaultPage.php'
+   /*$dbhost = 'localhost:3306';
+   $dbuser = 'root';
+   $dbpass = 'samuel1234';
+   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+   //check if the connection is active
+   if(!$conn){
+       die('Could not connect: '.mysql_error());
+   }
+   /* $sql = 'SELECT StudentNo, FirstName, LastName, Sex FROM students';
 
+    mysql_select_db('sma-db');
+    $retval = mysql_query($sql, $conn);
+    if(!$retval){
+        die('could not retrieve data: '.mysql_error());
+    }
+    while($row = mysql_fetch_assoc($retval)){*/
+    //mysql_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +32,7 @@
                     <img src="/samples/Cover.jpg" class="img-thumbnail" alt="image unavailable">
                 </div>
                 <div class="col-md-9 col-lg-9">
-                    <h1>Samuel Gaamuwa<br><br><small>12/U/274<br><br>S6</small></h1>
+                    <h1>Samuel Gaamuwa<br><br><small>21200019<br><br>S6</small></h1>
                 </div>
             </div>
             <div class="row">

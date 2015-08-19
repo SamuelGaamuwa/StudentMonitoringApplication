@@ -46,9 +46,12 @@
             </div>
             <div class="form-group">
                 <label for="fname">First Name</label>
-                <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
+                <input type="text" class="form-control" name="fname" placeholder="Enter First Name"><br>
                 <label for="fname">Last Name</label>
-                <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
+                <input type="text" class="form-control" name="lname" placeholder="Enter Last Name"><br>
+                <label for="stnum">Student Number</label>
+                <input type="number" class="form-control" name="stnum" placeholder="Enter Student Number"><br>
+                <!-- include a subjects form group but with only the optional subjects, compulsory ones will be fixed for each sutdent thus not chosen-->
             </div>
             <div class="radio">
                 <label class="checkbox-inline">
@@ -57,6 +60,28 @@
                 <label class="checkbox-inline">
                     <input type="radio" name="sex" value="female"> Female
                 </label>
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select class="form-control" name="class">
+                    <option value="S6">S6</option>
+                    <option value="S5">S5</option>
+                    <option value="S4">S4</option>
+                    <option value="S3">S3</option>
+                    <option value="S2">S2</option>
+                    <option value="S1">S1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="optional">Optional Subjects</label>
+                <select class="form-control" multiple="multiple" name="optional">
+                    <option value="ee">Electricity and Electronics</option>
+                    <option value="cre">Christian Religious Education</option>
+                    <option value="comm">Commerce</option>
+                    <option value="ent">Entrepreneurship</option>
+                    <option value="ww">WoodWork</option>
+                    <option value="acc">Accounts</option>
+                </select>
             </div>
             <input type="submit" value="Submit">
         </form>

@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
                 <label for="instance">Select category</label>
-                <select class="form-control" id="instance" onchange="enableselectionbox();">
+                <select class="form-control" name="instance" onchange="enableselectionbox();">
                     <option value="teacher">Teacher</option>
                     <option value="parent">Parent</option>
                 </select>
