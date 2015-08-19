@@ -1,7 +1,8 @@
 <?php
     include 'DefaultPage.php';
     //capture information attained in the form
-    if(isset($_POST['fname'])&&isset($_POST['lname'])&&isset($_POST['sex'])){
+    if(isset($_POST['stnum'])&&isset($_POST['fname'])&&isset($_POST['lname'])&&isset($_POST['sex'])){
+        $stnum = $_POST['stnum'];
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $sex = $_POST['sex'];
@@ -14,7 +15,7 @@
         }
     }
     else{
-        echo'there is something lacking';
+        echo'there is something lacking'."\n";
     }
 
     $dbhost = 'localhost:3306';
@@ -25,7 +26,17 @@
     if(!$conn){
         die('Could not connect: '.mysql_error());
     }
-    echo 'Successfuly connected';
+    echo 'Successfuly connected'."\n";
+    //statement to push values from the form to the database, not working though, syntax error
+    $sql = "INSERT INTO students ".
+           "(idStudents, FirstName, LastName, Sex) ".
+           "VALUES ( $stnum, $fname, $lname, $sex)";
+    mysql_select_db('sma_db');
+    $retval = mysql_query($sql, $conn);
+    if(!$retval){
+        die('could not enter data: '.mysql_error()."\n");
+    }
+    echo 'Entered successfully';
     mysql_close($conn);
      
     
@@ -45,12 +56,12 @@
                 Enter the details of the student
             </div>
             <div class="form-group">
+                <label for="stnum">Student Number</label>
+                <input type="number" class="form-control" name="stnum" placeholder="212******"><br>
                 <label for="fname">First Name</label>
                 <input type="text" class="form-control" name="fname" placeholder="Enter First Name"><br>
                 <label for="fname">Last Name</label>
                 <input type="text" class="form-control" name="lname" placeholder="Enter Last Name"><br>
-                <label for="stnum">Student Number</label>
-                <input type="number" class="form-control" name="stnum" placeholder="Enter Student Number"><br>
                 <!-- include a subjects form group but with only the optional subjects, compulsory ones will be fixed for each sutdent thus not chosen-->
             </div>
             <div class="radio">

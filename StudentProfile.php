@@ -1,22 +1,27 @@
  <?php
-    include 'DefaultPage.php'
-   /*$dbhost = 'localhost:3306';
-   $dbuser = 'root';
-   $dbpass = 'samuel1234';
-   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-   //check if the connection is active
-   if(!$conn){
-       die('Could not connect: '.mysql_error());
-   }
-   /* $sql = 'SELECT StudentNo, FirstName, LastName, Sex FROM students';
-
-    mysql_select_db('sma-db');
+    include 'DefaultPage.php';
+    $dbhost = 'localhost:3306';
+    $dbuser = 'root';
+    $dbpass = 'samuel1234';
+    $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+    if(!$conn){
+        die('Could not connect: '.mysql_error);
+    }
+    echo 'successful connection';
+    $sql = 'SELECT idStudents, FirstName, LastName, Sex FROM students';
+    mysql_select_db('sma_db');
     $retval = mysql_query($sql, $conn);
     if(!$retval){
-        die('could not retrieve data: '.mysql_error());
+        die('could not retrieve the required data: '.mysql_error());
     }
-    while($row = mysql_fetch_assoc($retval)){*/
-    //mysql_close($conn);
+    while($row  = mysql_fetch_assoc($retval)){
+        if({$row['idStudents']} == 212){
+            echo "Name: {$row['FirstName']} {$row['LastName']}<br>".
+                 "Student: {$row['idStudents']}<br>".
+                 "Sex: {$row['Sex']}";
+        }
+    }
+    mysql_close($conn);
 ?>
 
 <!DOCTYPE html>
