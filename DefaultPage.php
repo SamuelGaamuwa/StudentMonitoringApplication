@@ -27,7 +27,7 @@
                     <ul class="nav navbar-nav">
                         <li id="home"><a href="">HOME</a></li>
                         <li id="profile"><a href="">PROFILE</a></li>
-                        <li id="classes"><a href="">CLASSSES</a></li>
+                        <li id="classes"><a href="/Classes.php">CLASSSES</a></li>
                         <li id="messages"><a href="">MESSAGES</a></li>
                         <li id="student" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="">STUDENT<span class="caret"></span></a>

@@ -255,5 +255,10 @@ include 'DefaultPage.php';
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            window.onload = function () {
+                $('#classes').addClass('active');
+            };
+        </script>
     </body>
 </html>

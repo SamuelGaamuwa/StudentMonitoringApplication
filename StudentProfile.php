@@ -9,24 +9,28 @@
     }
     echo 'successful connection';
     //retrieve data from the database and students table 
-    $sql = 'SELECT idstudents, FirstName, LastName, Sex FROM students';
+    $sql = 'SELECT idstudents, FirstName, LastName, Sex, Class FROM students WHERE idstudents = 212000019';
     mysql_select_db('sma_db');
     $retval = mysql_query($sql, $conn);
     if(!$retval){
         die('could not retrieve the required data: '.mysql_error());
     }
-    while($row  = mysql_fetch_array($retval)){
-        //to output particular information, loop till it is found
-        $name = $row['FirstName'];
-        $stnum = $row['idstudents'];
-        $sex = $row['Sex'];
-        //if($stnum == '212000019'){
-            echo"Name: $name<br>".
-                "Student Number: $stnum<br>".
-                "Sex: $sex";
+    function printSt(){
+        while($row  = mysql_fetch_array($retval)){
+            //to output particular information, loop till it is found
+            $name = $row['FirstName'];
+            $stnum = $row['idstudents'];
+            $sex = $row['Sex'];
+            $class = $row['Class'];
+            //if($stnum == '212000019'){
+                echo"Name: $name<br>".
+                    "Student Number: $stnum<br>".
+                    "Sex: $sex<br>".
+                    "Class: $class";
             
+        }
     }
-    mysql_close($conn);
+   
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +46,7 @@
                     <img src="/samples/Cover.jpg" class="img-thumbnail" alt="image unavailable">
                 </div>
                 <div class="col-md-9 col-lg-9">
-                    <h1>Samuel Gaamuwa<br><br><small>212000019<br><br>S6</small></h1>
+                    <h1><?php printSt();?><br><br><small>212000019<br><br>S6</small></h1>
                 </div>
             </div>
             <div class="row">
@@ -90,5 +94,6 @@
                 $('#student').addClass('active');
             };
         </script>
+        <?php  mysql_close($conn);?>
     </body>
 </html>

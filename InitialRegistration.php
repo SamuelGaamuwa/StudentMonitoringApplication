@@ -53,14 +53,14 @@
        echo'Table '.select().' created';
    }
    //error here that i will need to fix, giving me a headache 
-   //$isql = "INSERT INTO ".select()." (first_name, last_name, username, password, join_date) VALUES('$fname', '$lname', '$username', '$password', NOW());";
+   $isql = "INSERT INTO ".select()." (first_name, last_name, username, password) VALUES('$fname', '$lname', '$username', '$password');";
    mysql_select_db('sma_db');
    //insert information into the new database or the existing one
-   /*$insert = mysql_query($isql, $conn);
+   $insert = mysql_query($isql, $conn);
    if(!$insert){
        die('could not insert data: '.mysql_error());
    }
-   echo 'entered successfully';*/
+   echo 'entered successfully';
    mysql_close($conn);
 ?>
 

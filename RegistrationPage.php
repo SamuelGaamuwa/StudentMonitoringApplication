@@ -1,46 +1,25 @@
 <?php
     include 'DefaultPage.php';
     //capture information attained in the form
-    if(isset($_POST['stnum'])&&isset($_POST['fname'])&&isset($_POST['lname'])&&isset($_POST['sex'])){
+    if(isset($_POST['stnum'])&&isset($_POST['fname'])&&isset($_POST['lname'])&&isset($_POST['sex'])&&isset($_POST['class'])){
         $stnum = $_POST['stnum'];
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $sex = $_POST['sex'];
+        $class = $_POST['class'];
         //check if all fields are filled 
         if(!empty($fname)&&!empty($lname)&&!empty($sex)){
             echo 'successful again ';
+            //continue;
         }
         else{
-            echo'please enter fill all the fields';
+            echo'there is a problem somewhere';
         }
     }
     else{
-        echo'there is something lacking'."\n";
+         echo'more problems';
     }
-
-    $dbhost = 'localhost:3306';
-    $dbuser = 'root';
-    $dbpass = 'samuel1234';
-    $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-    //check if the connection is active 
-    if(!$conn){
-        die('Could not connect: '.mysql_error());
-    }
-    echo 'Successfuly connected'."\n";
-    //statement to push values from the form to the database, not working though, syntax error
-    $sql = "INSERT INTO students ".
-           "(idStudents, FirstName, LastName, Sex) ".
-           "VALUES ( $stnum, $fname, $lname, $sex)";
-    mysql_select_db('sma_db');
-    $retval = mysql_query($sql, $conn);
-    if(!$retval){
-        die('could not enter data: '.mysql_error()."\n");
-    }
-    echo 'Entered successfully';
-    mysql_close($conn);
-     
-    
-   
+       
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +75,29 @@
             </div>
             <input type="submit" value="Submit">
         </form>
+ <?php 
+    $dbhost = 'localhost:3306';
+    $dbuser = 'root';
+    $dbpass = 'samuel1234';
+    $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+    //check if the connection is active 
+    if(!$conn){
+        die('Could not connect: '.mysql_error());
+    }
+    echo 'Successfuly connected'."\n";
+    //statement to push values from the form to the database, not working though, syntax error
+    $sql = "INSERT INTO students ".
+           "(idStudents, FirstName, LastName, Sex) ".
+           "VALUES ( '$stnum', '$fname', '$lname', '$sex')";
+    mysql_select_db('sma_db');
+    $retval = mysql_query($sql, $conn);
+    if(!$retval){
+        die('could not enter data: '.mysql_error()."\n");
+    }
+    echo 'Entered successfully';
+    mysql_close($conn);
+     
+ ?>
         <script type="text/javascript">
             window.onload = function () {
                 $('#student').addClass('active');
